@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   controllerName="com.solvia.project4.controller.Main"
+   xmlns:f="sap.ui.layout.form"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="helloDialog"
+      title="Yeni Kişi Ekle">
+
+      	<f:SimpleForm id="SimpleFormToolbar"    
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			ariaLabelledBy="Title1" >
+    
+        <f:content>
+
+                <Label text="Ad" />
+				<Input id="idAd"  />
+
+                <Label text="Soyad" />
+				<Input id="idSoyad"  />
+
+                <Label text="Fakülte"/>
+				<!-- <Input id="Fakulte" value="{SupplierName}" /> -->
+
+			<Select id="idFakulte"
+				items="{/FakulteList}">
+				<core:Item key="{key}" text="{text}"  />
+			</Select>
+
+                <Label text="Bölüm" />
+				<Input id="idBolum"  />
+
+                <Button text="Kaydet" type="Reject" press="onSaveInsideButtonNew" />
+                <Button text="Kapat" type="Default" press="onCloseDialogButtonNew" />
+
+        </f:content>
+      </f:SimpleForm>
+   </Dialog>
+</core:FragmentDefinition>

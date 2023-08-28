@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: com.solvia.project4
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://192.168.1.202:8010
+          client: "100"
+        app:
+          name: ZPROJECT2
+          description: Deployment
+          package: ZBYANPAR
+          transport: SS4K903891
+        exclude:
+          - /test/

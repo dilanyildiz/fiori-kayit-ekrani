@@ -1,0 +1,117 @@
+<mvc:View
+ controllerName="com.solvia.project4.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+	xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+	height="100%"
+    
+    >
+
+    <Page id="page" title="{i18n>title}" showHeader="false">
+        <content>
+       
+        <!-- <Select id="selectId" change = "onChange"
+        forceSelection = "false"
+        selectedKey = "" 
+        items="{globalModel>/List}">
+
+        <core:Item key="{globalModel>OgrNo}" text="{globalModel>Isim} - {globalModel>Soyisim} - {globalModel>Fakulte} - {globalModel>Bolum}" />
+
+        </Select> -->
+
+		<l:VerticalLayout width="100%">
+            <fb:FilterBar reset="onReset" filterContainerWidth="20rem" search="onSearch" showRestoreButton="false" showClearButton="false">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="{i18n>Arama}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                        <fb:control>
+                           <ToolbarSpacer/>
+						<SearchField ariaLabelledBy="text1" id="maxPrice" liveChange="onFilter">
+							<layoutData><OverflowToolbarLayoutData maxWidth="300px" shrinkable="true" priority="NeverOverflow"/></layoutData>
+						</SearchField>
+                        </fb:control>
+                    </fb:FilterGroupItem>   
+                    <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>secim}" partOfCurrentVariant="true" visibleInFilterBar="true">
+                        <fb:control>
+
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </l:VerticalLayout>
+	
+
+       	<Table id="idStudents"
+		inset="false"
+		mode="SingleSelectLeft"
+		items="{
+			path: 'globalModel>/List'
+		}">
+
+		<headerToolbar>
+			<OverflowToolbar>
+				
+				<ToolbarSpacer></ToolbarSpacer>
+				
+                <Button  id="idNew" text="New" press=".onNewOpenDialog"  icon="sap-icon://add-employee" type="Emphasized"/>
+				<Button id="idEdit" icon="sap-icon://edit" text="Edit" press=".onOpenDialog" class="sapUiSmallMarginEnd" type="Emphasized"/>
+				<Button	id="idSil" text="Sil" press="onDeleteFinal" icon="sap-icon://delete" type="Emphasized" />
+				<Button  id="idDownload" text="Download" press="onExport"  icon="sap-icon://excel-attachment" type="Emphasized" class="pinkButton" /> 
+				
+
+
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+		
+			<Column
+				width="12em">
+				<Text text="Öğrenci No" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Ad" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="Soyad" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Fakülte" />
+			</Column>
+			<Column>
+				<Text text="Bölüm" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+				
+					<Text
+						text="{globalModel>OgrNo}" />
+                    <Text
+						text="{globalModel>Isim}" />
+                    <Text
+						text="{globalModel>Soyisim}" />
+                     <Text
+						text="{globalModel>Fakulte}" />
+                     <Text
+						text="{globalModel>Bolum}" />
+
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+        </content>
+    </Page>
+</mvc:View>
