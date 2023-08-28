@@ -299,9 +299,11 @@ sap.ui.define([
                         method: "PUT",
                         success: function(data) {
 
+                    
                         that.oDialog.close();
                         that.onGetData();
-                        that.onRefresh();
+                        that.onRefreshEdit();
+
                         
                          MessageBox.success("success");
                         },
@@ -311,6 +313,40 @@ sap.ui.define([
                        });
             }; 
         },
+
+     
+
+            onRefreshEdit: function () {
+
+                var that=this;
+
+                sap.ui.getCore().byId("idAdEdit").setValue("");
+
+                sap.ui.getCore().byId("idSoyadEdit").setValue("");
+
+                sap.ui.getCore().byId("idFakulteEdit").setSelectedKey("");
+
+                sap.ui.getCore().byId("idBolumEdit").setValue("");
+
+               // this.onRefreshValueState();
+
+               that.onRefreshValueStateEdit();
+
+ 
+
+              },
+
+              onRefreshValueStateEdit:function(oEvent){
+
+                sap.ui.getCore().byId("idAdEdit").setValueState("None");
+
+                sap.ui.getCore().byId("idSoyadEdit").setValueState("None");
+
+                sap.ui.getCore().byId("idFakulteEdit").setValueState("None");
+
+                sap.ui.getCore().byId("idBolumEdit").setValueState("None");
+
+              },
         onNewOpenDialog : function () {
             var model;
             this.getView().byId("idStudents").removeSelections();
@@ -378,16 +414,20 @@ sap.ui.define([
         },
         onCloseDialogButtonNew : function(){
 
+            var that=this;
+            that.onRefreshNew();
             this.oDialog.close();
         },
         onRefreshNew:function(){
+
+            var that=this;
 
             sap.ui.getCore().byId("idAd").setValue("");
             sap.ui.getCore().byId("idSoyad").setValue("");
             sap.ui.getCore().byId("idFakulte").setSelectedKey("");
             sap.ui.getCore().byId("idBolum").setValue("");
 
-            this.onRefreshValueState();
+            that.onRefreshValueState();
 
     },
     onRefreshValueState: function(oEvent){

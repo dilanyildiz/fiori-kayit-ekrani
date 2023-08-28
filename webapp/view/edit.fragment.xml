@@ -27,6 +27,10 @@
     
         <f:content>
 
+
+				<Label text="Öğrenci Numarası" />
+
+                <Input id="idNoEdit" editable="false" enabled="false" value="{globalModel>/selectedLine/OgrNo}" />
                 <Label text="Ad" />
 				<Input id="idAdEdit" value="{globalModel>/selectedLine/Isim}" />
 
